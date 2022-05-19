@@ -8,7 +8,7 @@ const Home = () => {
     const [completeTask, setCompleteTask] = useState(0);
 
     useEffect(() => {
-        fetch('http://localhost:5000/items')
+        fetch(' https://morning-springs-86841.herokuapp.com/items')
             .then(response => response.json())
             .then(data => setItems(data))
     }, [stateChange, completeTask])
@@ -20,7 +20,7 @@ const Home = () => {
             const description = e.target.description.value;
             const item = { name, description }
 
-            fetch('http://localhost:5000/items', {
+            fetch(' https://morning-springs-86841.herokuapp.com/items', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ const Home = () => {
             setCompleteTask(completeTask - 1)
         }
         console.log(item.textStyle);
-        fetch(`http://localhost:5000/items/${id}`, {
+        fetch(` https://morning-springs-86841.herokuapp.com/items/${id}`, {
             method: 'DELETE'
         })
             .then(response => response.json())
@@ -53,7 +53,7 @@ const Home = () => {
 
     const handleComplete = (id) => {
         const style = { textStyle: true }
-        fetch(`http://localhost:5000/items/${id}`, {
+        fetch(` https://morning-springs-86841.herokuapp.com/items/${id}`, {
             method: 'PUT',
             body: JSON.stringify(style),
             headers: {
